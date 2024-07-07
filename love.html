@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #b5f0fa;
+        }
+        #letter {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.51);
+            text-align: center;
+            max-width: 300px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        #yesBtn {
+            background-color: #4caf50;
+            color: white;
+        }
+        #noBtn {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="letter">
+        <h2>heyy miszoh ! </h2>
+        <p> I love you so much meri jaan ❤️</p>
+        <p>Do you love me ? </p>
+        <button id="yesBtn">Yes</button>
+        <button id="noBtn">No</button>
+    </div>
+    <div id="yesPopup" class="popup">
+        <p>Perfect, my love.💖😚</p>
+    </div>
+    <div id="noPopup" class="popup">
+        <p>Hey there is no chance for NO ! You have to click on YES.. 😉</p>
+    </div>
+
+    <script>
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const yesPopup = document.getElementById('yesPopup');
+        const noPopup = document.getElementById('noPopup');
+
+        yesBtn.addEventListener('click', () => {
+            yesPopup.style.display = 'block';
+            setTimeout(() => {
+                yesPopup.style.display = 'none';
+            }, 2000);
+        });
+
+        noBtn.addEventListener('click', () => {
+            noPopup.style.display = 'block';
+            setTimeout(() => {
+                noPopup.style.display = 'none';
+            }, 2000);
+            moveButton();
+        });
+
+        function moveButton() {
+            const maxX = window.innerWidth - noBtn.offsetWidth;
+            const maxY = window.innerHeight - noBtn.offsetHeight;
+            const newX = Math.floor(Math.random() * maxX);
+            const newY = Math.floor(Math.random() * maxY);
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+        }
+    </script>
+</body>
+</html>
